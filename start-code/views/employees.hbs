@@ -1,0 +1,26 @@
+<h1>All Employees</h1>
+
+<ul>
+  {{#if isBoss}}
+    {{#each employees}}
+    <li>
+        <a href="/auth/{{this._id}}">
+            {{this.username}}
+        </a>
+        <a href="/auth/{{this._id}}/edit">Edit</a>
+        <a href="/auth/{{this._id}}/delete">Delete</a>
+    </li>
+    {{/each}}
+  {{else}}
+    {{#each employees}}
+      <li>
+        <a href="/auth/{{this.employee._id}}">
+              {{this.employee.username}}
+          </a>
+          {{#if isOwner}}
+            <a href="/auth/{{this.employee._id}}/edit">Edit</a>
+          {{/if}}
+      </li>
+    {{/each}}
+  {{/if}}
+</ul>
